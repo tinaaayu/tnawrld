@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="shortcut icon" href="flower.png">
+        <meta charset="UTF-8">
+        <style>
+            #background {
+                position: fixed;
+                min-width: 100%;
+                min-height: 100%;
+                right: 0;
+                top: 0;
+                opacity: 0.5;
+                z-index: 1;
+            }
+
+            #yay1 {
+                position: absolute;
+                top: 30vh;
+                left: 30vw;
+                width: 20vw;
+                z-index: 5;
+            }
+
+            #yay2 {
+                position: absolute;
+                top: 35vh;
+                right: 25vw;
+                width: 20vw;
+                z-index: 6;
+            }
+
+            #yay3 {
+                position: absolute;
+                top: 45vh;
+                left: 7vw;
+                width: 30vw;
+                z-index: 2;
+            }
+
+            #yay4 {
+                position: absolute;
+                top: 52vh;
+                right: 40vw;
+                width: 25vw;
+                z-index: 2;
+            }
+
+            #flower4-container {
+                position: fixed;
+                bottom: 0vh;
+                right: 5vw;
+                width: 20vw;
+                z-index: 1;
+            }
+
+            #flower4 {
+                width: 100%;
+                transition: transform 0.3s ease-out;
+            }
+
+            #flower4:hover {
+                transform: scale(1.3);
+            }
+
+            #home-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                color: black;
+                font-size: 16px;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                font-family: monospace;
+                font-weight: 600;
+                z-index: 10;
+            }
+
+            #flower4-container:hover #home-text {
+                opacity: 1;
+            }
+
+            .name-container {
+                position: fixed;
+                top: 10vh;
+                left: 5vw;
+                font-family: monospace;
+                font-size: 20px;
+                color: black;
+                z-index: 4;
+            }
+
+            #message {
+                font-size: 24px;
+                font-family: monospace;
+                color: darkblue;
+                margin-top: 10px;
+            }
+
+        </style> 
+    </head>
+    <body>
+        <img id="background" alt="An animated gif of a pink, green, and yellow ethereal looking lake. On it are shimmering shooting stars coming from various directions causing ripples in the water" src="flowerbackground.gif">
+        <img id="yay1" alt="A square graphic with pink lace trim, as well as illustrated line flowers and blue hearts along each side of the square. The center says 'What if it all works out?' in an ornate blue cursive font." src="yay1.jpg">
+        <img id="yay2" alt="A square graphic with an orange and pink blurred and blended background featuring a cross-section of a pink geode. The text says 'i love being me' in white, arial font, and 'can't wait to do it again tomorrow' in orange, arial font." src="yay2.jpg">
+        <img id="yay3" alt="A young cartoon sea turtle's close up face in front of a sky blue background with large, white text saying 'I did really well this week'." src="yay3.jpg">
+        <img id="yay4" alt="A side view outline of a human's head that is blue with a pale yellow center facing the right. Another side view outline of a human's head with various differently decorated hearts, butterflies, and clouds on a green backdrop facing the right. The left face says 'your work is shit' with an arrow pointing at the right face. The right face says 'no, it's great' with an arrow pointing at itself." src="yay4.jpg">
+
+        <a href="index.html">
+            <div id="flower4-container">
+                <span id="home-text">home</span>
+                <img id="flower4" src="flower4.png" alt="Light pink, vertical stalk of flowers, each with pink edges and a white center. When hovered over, it grows slightly larger and the word 'home' appears, making it into a home button.">
+            </div>
+        </a>
+
+        <div class="name-container">
+            <label for="fname">say something nice to urself, or don't:</label>
+            <input type="text" id="fname" name="fname">
+            <div id="message"></div>
+        </div>
+
+        <script>
+            document.getElementById("fname").addEventListener("input", function() {
+                let name = this.value.trim();
+                let messageDiv = document.getElementById("message");
+
+                if (name) {
+                    messageDiv.innerHTML = `hey, you! <b>${name}</b>`;
+                } else {
+                    messageDiv.innerHTML = "";
+                }
+            });
+        </script>
+    </body>
+</html>
