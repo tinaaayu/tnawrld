@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>tnawrld</title>
+        <link rel="shortcut icon" href="flower3.png">
+        <meta charset="UTF-8">
+        <style>
+                #shell {
+                    position: absolute;
+                    top: 60vh;
+                    left: 30vw;
+                    width: 60vw; 
+                }
+
+                #fairy {
+                    position: absolute;
+                    top: 5vh;
+                    right: 20vw;
+                    width: 25vw;
+                    z-index: 1;
+                }
+
+            body {
+                cursor: help;
+            }
+
+            #background {
+                position: fixed;
+                min-width: 100%;
+                min-height: 100%;
+                right: 0;
+                top: 0;
+                opacity: 0.3;
+            }
+
+            #flower {
+                position: absolute;
+                bottom: 0vh;
+                left: 0vw;
+                width: 40vw;
+                z-index: 1;
+                transition: 0.5s ease;
+            }
+
+            #shell {
+                position: absolute;
+                top: 20vh;
+                left: 30vw;
+                width: 30vw; 
+                z-index: 1;
+                transition: 0.5s ease;
+            }
+
+            #fairy {
+                position: absolute;
+                top: 5vh;
+                right: 20vw;
+                width: 25vw;
+                z-index: 1;
+                transition: 0.5s ease;
+            }
+
+            .page:hover {
+                filter: invert(100%);
+            }
+
+            #flower4 {
+                position: fixed;
+                bottom: 0vh;
+                right: 5vw;
+                width: 20vw;
+                z-index: 100;
+            }
+
+            #spotify-iframe {
+                position: fixed;
+                bottom: 10vh; 
+                left: 38vw; 
+                width: 40vw;
+                z-index: 200; 
+                display: none; 
+                transition: all 0.5s ease-in-out; 
+            }
+
+            @media (max-width: 600px) {
+                body {
+                    background: red;
+                }
+                #shell {
+                    left: 40vw;
+                    width: 40vw;
+                }
+            }
+        </style> 
+    </head>
+    <body>
+        <img id="background" src="background.gif" alt="Animated gif looking out from a window with pink curtains and yellow trims. The view is a tuxedo cat playfully chasing a butterfly on a grass field and under the blue sky.">
+        
+        <a href="flower.html"> 
+            <img id="flower" class="page" src="flower.png" alt="Painted bundle of flowers in white, pale pink, and light yellow that inverts in color when hovered over.">
+        </a>
+
+        <a href="mermaid.html"> 
+            <img id="shell" class="page" src="shell.png" alt="Iridescent conch shell that inverts in color when hovered over.">
+        </a>
+
+        <a href="fairy.html"> 
+            <img id="fairy" class="page" src="fairy.png" alt="Green tamagotchi toy with hot pink buttons and pink wings on each side that inverts in color when hovered over.">
+        </a>
+
+        <img id="flower4" src="flower4.png" alt="Light pink, vertical stalk of flowers, each with pink edges and a white center.">
+
+        <iframe id="spotify-iframe" src="https://open.spotify.com/embed/track/61Emqg95O9zo1GNOcyxq4Y?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+        <script>
+            document.getElementById("flower4").addEventListener("click", function() {
+                var spotifyIframe = document.getElementById("spotify-iframe");
+                
+                if (spotifyIframe.style.display === "none") {
+                    spotifyIframe.style.display = "block";
+                } else {
+                    spotifyIframe.style.display = "none";
+                }
+            });
+        </script>
+    </body>
+</html>
