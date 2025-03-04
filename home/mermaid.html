@@ -1,0 +1,229 @@
+<!doctype.html>
+<html>
+    <head>
+        <title></title>
+        <link rel="shortcut icon" href="shell.png">
+        <meta charset="UTF-8">
+        <style>
+            body {
+                cursor: grab;
+            }
+
+            #background {
+                position: fixed;
+                min-width: 100%;
+                min-height: 100%;
+                right: 0;
+                top: 0;
+                opacity: 0.3;
+            }
+            
+            #base {
+                position: absolute;
+                top: 10vh;
+                left: 30vw;
+                width: 60vw;
+                z-index: 2;
+            }
+
+            #tail1 {
+                top: 8vh;
+                left: 5vw;
+                width: 35vw;
+                height: 80vh;
+            }
+
+            #tail2 {
+                top: 30vh;
+                left: 0vw;
+                width: 20vw;
+                height: 80vh;
+                rotate: 10deg;
+            }
+
+            #tail3 {
+                top: 55vh;
+                left: 7vw;
+                width: 22vw;
+                height: 90vh;
+                rotate: 10deg;
+            }
+
+            #bikini1 {
+                top: 52vh;
+                right: 30vw;
+                width: 13vw;
+                height: 25vh;
+            }
+
+            #bikini2 {
+                top: 60vh;
+                right: 26vw;
+                width: 8vw;
+                height: 18vh;
+            }
+
+            #bikini3 {
+                top: 65vh;
+                right: 35vw;
+                width: 10vw;
+                height: 24vh;
+            }
+
+            .parts {
+                position: absolute;
+                z-index: 3;
+            }
+
+            #words {
+                position: fixed;
+                top: 60px;
+                right: 40px;
+                color: rgb(0, 38, 134);
+                font-size: 30px;
+                font-family: monospace;
+                z-index: 4;
+            }
+
+            #flower4-container {
+                position: fixed;
+                bottom: 0vh;
+                right: 5vw;
+                width: 20vw;
+                z-index: 1;
+            }
+
+            #flower4 {
+                width: 100%;
+                transition: transform 0.3s ease-out;
+            }
+
+            #flower4:hover {
+                transform: scale(1.3);
+            }
+
+            #home-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                color: black;
+                font-size: 16px;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                font-family: monospace;
+                font-weight: 600;
+                z-index: 10;
+            }
+
+            #flower4-container:hover #home-text {
+                opacity: 1;
+            }
+
+            .name-container {
+                position: fixed;
+                top: 120px;
+                right: 50px;
+                z-index: 4;
+                font-family: monospace;
+                font-size: 16px;
+                color: black;
+            }
+
+            #fname {
+                font-size: 16px;
+                border: 1px solid black;
+                border-radius: 5px;
+            }
+
+            #newWords {
+                position: fixed;
+                top: 250px;
+                right: 40px;
+                font-size: 18px;
+                font-family: monospace;
+                color: rgb(255, 99, 180);
+                z-index: 4;
+            }
+        </style> 
+    </head>
+    <body>
+        <img id="background" alt="A close-up image of numerous translucent pink jellyfish floating in the ocean." src="mermaidbackground.jpg">
+        <img id="tail1" alt="A purple mermaid's tail."class="parts" src="tail1.png">
+        <img id="tail2" alt="A dark green mermaid's tail with orange fins."class="parts" src="tail2.png">
+        <img id="tail3" alt="A bright orange mermaid's tail with specks of white and white fins."class="parts" src="tail3.png">
+        <img id="bikini1" alt="A floral, multi-colored women's bathing suit top." class="parts" src="bikini1.png">
+        <img id="bikini2" alt="A green women's bathing suit top with brown and yellow beading." class="parts" src="bikini2.png">
+        <img id="bikini3" alt="A black and white striped women's bathing suit top with a light pink trim." class="parts" src="bikini3.png">
+        <img id="base" alt="An illustrated outline of a basic mermaid's body from the neck down." src="base.png">
+
+         <a href="index.html">
+            <div id="flower4-container">
+                <span id="home-text">home</span>
+                <img id="flower4" src="flower4.png" alt="Light pink, vertical stalk of flowers, each with pink edges and a white center. When hovered over, it grows slightly larger and the word 'home' appears, making it into a home button.">
+            </div>
+        </a>
+        
+        <div id="words">
+            dress up your mermaid!
+        </div>
+
+        <div class="name-container">
+            <label for="fname">what's her name?:</label>
+            <input type="text" id="fname" name="fname">
+        </div>
+
+        <div id="newWords"></div>
+
+
+        <script>
+            function dragElement(elmnt) {
+                var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+                elmnt.onmousedown = dragMouseDown;
+
+                function dragMouseDown(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    document.onmouseup = closeDragElement;
+                    document.onmousemove = elementDrag;
+                }
+
+                function elementDrag(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    pos1 = pos3 - e.clientX;
+                    pos2 = pos4 - e.clientY;
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                }
+
+                function closeDragElement() {
+                    document.onmouseup = null;
+                    document.onmousemove = null;
+                }
+            }
+
+            dragElement(document.getElementById("tail1"));
+            dragElement(document.getElementById("tail2"));
+            dragElement(document.getElementById("tail3"));
+            dragElement(document.getElementById("bikini1"));
+            dragElement(document.getElementById("bikini2"));
+            dragElement(document.getElementById("bikini3"));
+
+
+            document.getElementById("fname").addEventListener("input", function() {
+                let name = this.value.trim();
+                let newWordsDiv = document.getElementById("newWords");
+
+                if (name.length > 0) {
+                    newWordsDiv.innerHTML = `a beautiful mermaid named ${name} was born!`;
+                } else {
+                    newWordsDiv.innerHTML = "";
+                }
+            });
+        </script>
+    </body>
+</html>
